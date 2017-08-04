@@ -1,0 +1,50 @@
+/**
+ * My commodity trading network
+ */
+
+namespace org.acme.mynetwork
+
+participant Researcher identified by participantID {
+
+}
+
+participant patient identified by participantID {
+  o String firstName
+  o String lastName 
+}
+
+participant Auditor identified by participantID {
+
+}
+
+participant EthicsBoard identified by participantID {
+
+}
+
+participant Clinicians identified by participantID {
+
+}
+
+
+
+
+
+asset Commodity identified by tradingSymbol {
+    o String tradingSymbol
+    o String description
+    o String mainExchange
+    o Double quantity
+    --> Trader owner
+}
+participant Trader identified by tradeId {
+    o String tradeId
+    o String firstName
+    o String lastName
+}
+transaction Trade {
+    --> Commodity commodity
+    --> Trader newOwner
+}
+event TradeNotification {
+    --> Commodity commodity
+}
